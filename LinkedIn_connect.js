@@ -36,29 +36,59 @@ let user=process.argv[3];
         implicit: 100000,
         pageload:100000
     });
-    let people= await driver.findElement(swd.By.xpath("//*[text()='People']"));
+
+    console.log("hello");
+    await driver.wait(swd.until.elementLocated(swd.By.css(".name.actor-name")));
+    console.log("hello2");
+    let people= await driver.findElement(swd.By.css(".name.actor-name"));
     await people.click();
     
-    let ignore= await driver.findElement(swd.By.css('.msg-overlay-bubble-header'));
-    await ignore.click();
+
+    // driver.findElements(By.xpath("//*[contains(text(),'Write and Earn')]")
+//     By.xpath("//button[contains(text(),'Add Strategy')]")
+// By.xpath("//button[contains(text(),'Submit')]")
+
+
+    await driver.wait(swd.until.elementLocated(swd.By.css(".profile-detail")));
+    console.log("hello2");
+
+
+
+
+
+
+    let connect= await driver.findElement(swd.By.xpath('//button[normalize-space()="Connect"]'));
+    await connect.click();
+    console.log("hello24");
+
+    await driver.wait(swd.until.elementLocated(swd.By.xpath('//button[normalize-space()="Send now"]')));
+    let send= await driver.findElement(swd.By.xpath('//button[normalize-space()="Send now"]'));
+    await send.click();
+    console.log("hello246");
+    // driver.navigate().back();
+
+    // await driver.wait(swd.until.elementLocated(swd.By.css(".name.actor-name")));
+    // console.log("hello29");
+    // let people2= await driver.findElement(swd.By.css(".name.actor-name"));
+    // await people2.click();
+
+
+
+
+
+
+
+
+    // let ignore= await driver.findElement(swd.By.css('.msg-overlay-bubble-header'));
+    // await ignore.click();
     // await people.sendKeys(swd.Key.ENTER);
-    await driver.manage().setTimeouts({
-        implicit: 100000,
-        pageload:100000
-    });
+    // await driver.manage().setTimeouts({
+    //     implicit: 100000,
+    //     pageload:100000
+    // });
     
     console.log("hello");
-    // await driver.wait(swd.until.elementLocated(swd.By.css("//*[text()='Connections']")));
-    // console.log("error");
-
-    await  driver.sleep(2000);
-
-    
-     await driver.executeScript("javascript:window.scrollBy(0,3000)");
-     
-     let nextpage = await driver.findElement(swd.By.xpath("//*[text()='Next']"));
-
-     await nextpage.click();
+    driver.navigate().back();
 
     
 
